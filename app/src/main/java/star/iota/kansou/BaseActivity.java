@@ -62,7 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         } else {
             System.arraycopy(mHints, 1, mHints, 0, mHints.length - 1);
             mHints[mHints.length - 1] = SystemClock.uptimeMillis();
-            Snackbar.make(findViewById(android.R.id.content), "真的要退出了吗", Snackbar.LENGTH_SHORT).setAction("再按一次退出", new View.OnClickListener() {
+            Snackbar.make(findViewById(android.R.id.content), "(ノ๑`ȏ´๑)ノ︵", Snackbar.LENGTH_SHORT).setAction("yes", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     System.exit(0);

@@ -1,6 +1,5 @@
 package star.iota.kansou;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -16,10 +15,9 @@ class DataPresenter extends StringPresenter {
     }
 
     @Override
-    protected Bean dealResponse(int type, String s) {
+    protected Bean dealResponse(int type, Document document) {
         HashMap<String, ArrayList<Bean.ItemBean>> category = new HashMap<>();
         ArrayList<String> titles = new ArrayList<>();
-        Document document = Jsoup.parse(s);
         for (Element element : document.select("#contents > h2")) {
             titles.add(element.text());
         }

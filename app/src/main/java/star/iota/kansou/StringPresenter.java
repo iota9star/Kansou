@@ -1,11 +1,11 @@
 package star.iota.kansou;
 
 
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.convert.StringConvert;
-import com.lzy.okgo.model.Response;
-import com.lzy.okrx2.adapter.ObservableResponse;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
@@ -19,7 +19,6 @@ abstract class StringPresenter implements PVContract.Presenter {
 
     private final CompositeDisposable mCompositeDisposable;
 
-    @SuppressWarnings("unchecked")
     StringPresenter(PVContract.View view) {
         this.view = view;
         mCompositeDisposable = new CompositeDisposable();
@@ -33,14 +32,23 @@ abstract class StringPresenter implements PVContract.Presenter {
     @Override
     public void get(final int type, String url) {
         mCompositeDisposable.add(
-                OkGo.<String>get(url)
-                        .converter(new StringConvert())
-                        .adapt(new ObservableResponse<String>())
-                        .subscribeOn(Schedulers.io()).observeOn(Schedulers.computation())
-                        .map(new Function<Response<String>, Bean>() {
+                Observable.just(Jsoup.connect(url)
+                        .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/6.1.3397.16 Safari/537.36")
+                        .ignoreContentType(true)
+                        .ignoreHttpErrors(true)
+                        .timeout(60000))
+                        .map(new Function<Connection, Document>() {
                             @Override
-                            public Bean apply(@NonNull Response<String> s) throws Exception {
-                                return dealResponse(type, s.body());
+                            public Document apply(@NonNull Connection connection) throws Exception {
+                                return connection.get();
+                            }
+                        })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.computation())
+                        .map(new Function<Document, Bean>() {
+                            @Override
+                            public Bean apply(@NonNull Document document) throws Exception {
+                                return dealResponse(type, document);
                             }
                         })
                         .observeOn(AndroidSchedulers.mainThread())
@@ -58,5 +66,5 @@ abstract class StringPresenter implements PVContract.Presenter {
         );
     }
 
-    protected abstract Bean dealResponse(int type, String s);
+    protected abstract Bean dealResponse(int type, Document document);
 }

@@ -8,8 +8,8 @@ android {
         applicationId "star.iota.kansou"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1
-        versionName "kansou kansou"
+        versionCode 2
+        versionName "kansou kansou kansou"
         resConfigs "zh"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -33,12 +33,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.0.0'
     testCompile 'junit:junit:4.12'
 
-    //OkHttp
-    compile 'com.squareup.okhttp3:okhttp:latest.release'
-
-    //okio
-    compile 'com.squareup.okio:okio:latest.release'
-
     //RxJava
     compile 'io.reactivex.rxjava2:rxjava:latest.release'
 
@@ -59,12 +53,4 @@ dependencies {
 
     //jsoup
     compile 'org.jsoup:jsoup:latest.release'
-
-    //okgo
-    compile 'com.lzy.net:okgo:latest.release'
-    compile 'com.lzy.net:okrx2:latest.release'
-
-    //SmartRefreshLayout
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:latest.integration'
-    compile 'com.scwang.smartrefresh:SmartRefreshHeader:latest.integration'
 }
