@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "star.iota.kansou"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "kansou kansou"
+        resConfigs "zh"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
+    compile 'com.android.support:recyclerview-v7:26.0.0'
+    testCompile 'junit:junit:4.12'
+
+    //OkHttp
+    compile 'com.squareup.okhttp3:okhttp:latest.release'
+
+    //okio
+    compile 'com.squareup.okio:okio:latest.release'
+
+    //RxJava
+    compile 'io.reactivex.rxjava2:rxjava:latest.release'
+
+    //RxAndroid
+    compile 'io.reactivex.rxjava2:rxandroid:latest.release'
+
+    //ButterKnife
+    compile 'com.jakewharton:butterknife:latest.release'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:latest.release'
+
+    //material drawer
+    compile("com.mikepenz:materialdrawer:latest.release") {
+        transitive = true
+    }
+
+    //item animators
+    compile 'jp.wasabeef:recyclerview-animators:latest.release'
+
+    //jsoup
+    compile 'org.jsoup:jsoup:latest.release'
+
+    //okgo
+    compile 'com.lzy.net:okgo:latest.release'
+    compile 'com.lzy.net:okrx2:latest.release'
+
+    //SmartRefreshLayout
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:latest.integration'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:latest.integration'
+}

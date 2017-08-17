@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/v4dp"
+    android:layout_marginRight="@dimen/v4dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/text_view_second_column"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lineSpacingExtra="@dimen/v4dp"
+            android:padding="@dimen/v8dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/v12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="@dimen/v4dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/v8dp"
+            android:background="@drawable/bg_orange" />
+
+        <TextView
+            android:id="@+id/text_view_third_column"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lineSpacingExtra="@dimen/v4dp"
+            android:padding="@dimen/v8dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/v12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="@dimen/v4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end|center_vertical">
+
+        <TextView
+            android:id="@+id/text_view_first_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/v4dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/v12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="@dimen/v4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+</LinearLayout>
